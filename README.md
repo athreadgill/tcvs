@@ -11,6 +11,6 @@ If you do not wish to store it there save it to the API/API_KEY.txt file as plai
 ## Requirements
 Php Version 8 - Apache or NGINX
 
-##Installation
+## Installation
 Copy the tcvs folder to your servers httpd folder, set your API Key, and then go to the server URL/tcvs to start using the script.
 
