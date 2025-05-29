@@ -25,7 +25,7 @@ if($apiKey==NULL){$apiKey = file_get_contents("API/API_KEY.txt");}
 
             <h2>Treasury Check Verification System (TCVS) Validation</h2>
             <p>Issue information for U.S. Treasury checks can be verified provided that the financial institution has a valid routing transit number, check number and check amount. Treasury checks that are older than 13-months old will not be available in this application. These checks should not be cashed by your institution since they are no longer valid after one year. Please inform the payee to contact the issuing agency for additional information. This website is available for use 7 days a week from 6:00am to 12:00am ET. <b><span style="color:red">*</span> Field Required</b></p><a href="#" id="toggleLink"><b>🪙 How to Read a Treasury Check</a> </b><br/><br/>
-            <img class="tcvs-check" src="/images/tcvs-check.png" alt="My Image" id="myImage">
+            <img class="tcvs-check" src="/tcvs/images/tcvs-check.png" alt="My Image" id="myImage">
 
 
             <?php if(!$_POST) { ?>
