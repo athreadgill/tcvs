@@ -9,7 +9,7 @@ Ideally you should store your API Key in the httpd conf file on your server (if 
 If you do not wish to store it there save it to the API/API_KEY.txt file as plain text and the program will grab it there instead. 
 
 ## Requirements
-PHP Version 8 - Apache or NGINX
+PHP Version 8 - Apache, NGINX, IIS
 
 ## Installation
 Copy the tcvs folder to your servers httpd folder, set your API Key, and then go to the server URL/tcvs to start using the script.
