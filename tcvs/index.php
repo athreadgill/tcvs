@@ -90,18 +90,29 @@ if($apiKey==NULL){$apiKey = file_get_contents("API/API_KEY.txt");}
                 echo '<table>';
                 echo '<tr><th>Check Tracking ID</th><th>Check Symbol</th><th>Check Serial Number</th><th>Issue Amount</th><th>Symbol Serial Matches</th><th>Amount Matches</th><th>Status</th><th>Payee</th></tr>';
 
+                function safe($array, $key) {
+                    return htmlspecialchars($array[$key] ?? '');
+                }
+
                 foreach ($data['checks'] as $check) {
+                    $status = safe($check, 'status');
+                    $check_tracking_id = safe($check, 'check_tracking_id');
+                    $symbol_number = safe($check, 'symbol_number');
+                    $serial_number = safe($check, 'serial_number');
+                    $amount = safe($check, 'amount');
+                    $symbol_serial_matches = !empty($check['symbol_serial_matches']) ? 'Yes' : 'No';
+                    $amount_matches = !empty($check['amount_matches']) ? 'Yes' : 'No';
+                    $payee = safe($check, 'payee');
+
                     echo '<tr>';
-                    echo '<td>' . htmlspecialchars($check['check_tracking_id']) . '</td>';
-                    echo '<td>' . htmlspecialchars($check['symbol_number']) . '</td>';
-                    echo '<td>' . htmlspecialchars($check['serial_number']) . '</td>';
-                    echo '<td>$' . htmlspecialchars($check['amount']) . '</td>';
-                    echo '<td>' . htmlspecialchars($check['symbol_serial_matches'] ? 'Yes' : 'No') . '</td>';
-                    echo '<td>' . htmlspecialchars($check['amount_matches'] ? 'Yes' : 'No') . '</td>';
-                    echo '<td>';
-                    if (htmlspecialchars($check['status'])!="I"){echo "<b>⛔</b>";}else{ echo "<b>🟢</b>";};
-                    echo htmlspecialchars($check['status']) . '</td>';
-                    echo '<td>' . htmlspecialchars($check['payee']) . '</td>';
+                    echo "<td>$check_tracking_id</td>";
+                    echo "<td>$symbol_number</td>";
+                    echo "<td>$serial_number</td>";
+                    echo "<td>\$$amount</td>";
+                    echo "<td>" . htmlspecialchars($symbol_serial_matches) . "</td>";
+                    echo "<td>" . htmlspecialchars($amount_matches) . "</td>";
+                    echo "<td>" . ($status !== 'I' ? '<b>⛔</b>' : '<b>🟢</b>') . "$status</td>";
+                    echo "<td>$payee</td>";
                     echo '</tr>';
                 }
 
